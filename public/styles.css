@@ -1,94 +1,92 @@
-/* Basic Reset and Body */
-* { box-sizing: border-box; }
-body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { margin:0; }
 
-/* Controls Panel */
+#map { height: 100vh; width: 100%; }
+
 .controls {
     position: absolute;
-    top: 10px;
+    top: 70px;
     left: 10px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 6px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 5px;
-    max-width: 90vw;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
-.controls button, .controls input, .controls select {
-    padding: 5px 10px;
+
+.controls input {
+    padding: 6px;
+    border-radius: 4px;
     border: 1px solid #ccc;
+}
+
+.controls button {
+    padding: 6px 10px;
+    background: #ff6b35;
+    color: white;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
 }
-.controls button { background-color: #ff6b35; color: white; border: none; }
-.controls button:hover { background-color: #e55a2b; }
-.controls button i { margin-right: 5px; }
 
-/* Map */
-#map { width: 100%; }
+.controls button:hover { background: #e55a2b; }
 
-/* Modals */
+/* Modal */
 .modal {
     position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    z-index: 2000;
 }
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 500px;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-.close, .close-add {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    cursor: pointer;
-}
-.close:hover, .close-add:hover { color: black; }
+
 .hidden { display: none; }
 
-/* Form and Lists */
-#log-form { margin: 10px 0; }
-#log-form input, #log-form select, #log-form textarea {
-    display: block;
-    width: 100%;
-    margin: 5px 0;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
-#log-form button { background-color: #28a745; color: white; border: none; margin-top: 10px; }
-#log-form button:hover { background-color: #218838; }
-#food-list, #experiences { list-style: none; padding: 0; }
-#food-list li, #experiences li { padding: 5px 0; border-bottom: 1px solid #eee; }
-#food-list li:before { content: '🍽️ '; }
-#experiences li:before { content: '📝 '; }
-.modal-content h2, .modal-content h3 { color: #ff6b35; margin-bottom: 10px; }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .controls { flex-direction: column; width: 200px; font-size: 12px; }
-    .modal-content { width: 95%; padding: 15px; }
-    #map { height: calc(100vh - 120px); }
+.close { float: right; font-size: 22px; cursor: pointer; }
+
+#log-form input, #log-form select, #log-form textarea, #log-form button {
+    width: 100%;
+    margin: 6px 0;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
-@media (max-width: 480px) {
-    .controls { top: 5px; left: 5px; width: calc(100vw - 10px); padding: 5px; }
-    .modal-content { width: 98%; max-height: 90vh; }
-    #log-form input[type="radio"] { width: auto; display: inline; margin-right: 10px; }
+
+#log-form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
 }
+
+#log-form button:hover { background-color: #218838; }
+
+.rating-group {
+    display: flex;
+    gap: 20px;
+    margin: 6px 0;
+}
+
+.rating-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#experiences { list-style:none; padding:0; }
+#experiences li { border-bottom: 1px solid #eee; padding: 4px 0; }
