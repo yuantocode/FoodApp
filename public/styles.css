@@ -1,0 +1,82 @@
+/* Basic Reset and Body */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
+
+/* Controls Panel */
+.controls {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.controls button, .controls input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.controls button { background-color: #007bff; color: white; }
+.controls button:hover { background-color: #0056b3; }
+
+/* Map */
+#map { width: 100%; }
+
+/* Modal */
+.modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+.close:hover { color: black; }
+.hidden { display: none; }
+
+/* Form and Lists */
+#log-form { margin: 10px 0; }
+#log-form input, #log-form select, #log-form textarea {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#log-form button { background-color: #28a745; color: white; border: none; }
+#log-form button:hover { background-color: #218838; }
+#food-list, #experiences { list-style: none; padding: 0; }
+#food-list li, #experiences li { padding: 5px 0; border-bottom: 1px solid #eee; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls { flex-direction: column; width: 200px; }
+    .modal-content { width: 95%; padding: 15px; }
+    #map { height: calc(100vh - 100px); } /* Adjust for controls */
+}

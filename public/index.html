@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Food Map Tracker</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="controls">
+        <button id="export-btn">Export Experiences</button>
+        <button id="import-btn">Import Experiences</button>
+        <input type="text" id="trip-search" placeholder="Search city/country (e.g., Santa Rosa)">
+        <button id="browse-trip">Browse Trip</button>
+        <button id="reset-map">Reset Map</button>
+    </div>
+    <div id="map" style="height: 100vh;"></div>
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="place-title"></h2>
+            <ul id="food-list"></ul>
+            <form id="log-form">
+                <select id="food-select" required><option>Select Food</option></select>
+                <input type="radio" name="rating" value="liked" required> Liked
+                <input type="radio" name="rating" value="disliked" required> Disliked
+                <textarea id="notes" placeholder="Personal notes (e.g., 'Too sweet, avoid next time')"></textarea>
+                <button type="submit">Log Experience</button>
+            </form>
+            <h3>Your Experiences</h3>
+            <ul id="experiences"></ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
