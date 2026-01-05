@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Food Map Explorer</title>
+<title>Dynamic Food Map</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
@@ -13,28 +13,26 @@
 
 <div class="controls">
     <input id="city-input" placeholder="Enter city (e.g., Tokyo)">
+    <button id="load-city">Load City</button>
     <select id="type-filter">
         <option value="">All Types</option>
         <option value="cafe">Cafe</option>
         <option value="restaurant">Restaurant</option>
         <option value="fast_food">Fast Food</option>
     </select>
-    <button id="load-city">Load Map</button>
     <button id="near-me">Near Me</button>
     <button id="reset-map">Reset Map</button>
+    <div id="results-count"></div>
 </div>
 
 <div id="map"></div>
 
-<!-- DETAILS MODAL -->
 <div id="modal" class="modal hidden">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2 id="place-title"></h2>
         <form id="log-form">
-            <select id="food-select" required>
-                <option value="">Select Food</option>
-            </select>
+            <select id="food-select" required></select>
             <div class="rating-group">
                 <label><input type="radio" name="rating" value="liked" required> Liked</label>
                 <label><input type="radio" name="rating" value="disliked"> Disliked</label>
