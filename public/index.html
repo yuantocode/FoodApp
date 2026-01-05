@@ -5,15 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Food Map Tracker</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="controls">
-        <button id="export-btn">Export Experiences</button>
-        <button id="import-btn">Import Experiences</button>
-        <input type="text" id="trip-search" placeholder="Search city/country (e.g., Santa Rosa)">
-        <button id="browse-trip">Browse Trip</button>
-        <button id="reset-map">Reset Map</button>
+        <button id="export-btn"><i class="fas fa-share"></i> Export</button>
+        <button id="import-btn"><i class="fas fa-download"></i> Import</button>
+        <input type="text" id="trip-search" placeholder="Search city (e.g., Tokyo)">
+        <button id="browse-trip"><i class="fas fa-search"></i> Browse Trip</button>
+        <select id="region-select">
+            <option value="">Select Region</option>
+            <option value="Japan">Japan</option>
+            <option value="USA">USA</option>
+            <option value="Philippines">Philippines</option>
+        </select>
+        <button id="zoom-region"><i class="fas fa-map-marked-alt"></i> Zoom Region</button>
+        <button id="near-me"><i class="fas fa-location-arrow"></i> Near Me</button>
+        <button id="reset-map"><i class="fas fa-undo"></i> Reset Map</button>
     </div>
     <div id="map" style="height: 100vh;"></div>
     <div id="modal" class="modal hidden">
@@ -23,13 +32,22 @@
             <ul id="food-list"></ul>
             <form id="log-form">
                 <select id="food-select" required><option>Select Food</option></select>
-                <input type="radio" name="rating" value="liked" required> Liked
-                <input type="radio" name="rating" value="disliked" required> Disliked
+                <input type="radio" name="rating" value="liked" required> <i class="fas fa-thumbs-up"></i> Liked
+                <input type="radio" name="rating" value="disliked" required> <i class="fas fa-thumbs-down"></i> Disliked
                 <textarea id="notes" placeholder="Personal notes (e.g., 'Too sweet, avoid next time')"></textarea>
-                <button type="submit">Log Experience</button>
+                <button type="submit"><i class="fas fa-save"></i> Log Experience</button>
             </form>
             <h3>Your Experiences</h3>
             <ul id="experiences"></ul>
+        </div>
+    </div>
+    <div id="add-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-add">&times;</span>
+            <h2>Add New Place</h2>
+            <input id="new-place-name" placeholder="Place Name (e.g., New Cafe)" required>
+            <input id="new-place-foods" placeholder="Foods (comma-separated, e.g., Pizza, Burger)" required>
+            <button id="save-place"><i class="fas fa-plus"></i> Save Place</button>
         </div>
     </div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>

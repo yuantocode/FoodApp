@@ -8,27 +8,30 @@ body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
     top: 10px;
     left: 10px;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    max-width: 90vw;
 }
-.controls button, .controls input {
+.controls button, .controls input, .controls select {
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 14px;
 }
-.controls button { background-color: #007bff; color: white; }
-.controls button:hover { background-color: #0056b3; }
+.controls button { background-color: #ff6b35; color: white; border: none; }
+.controls button:hover { background-color: #e55a2b; }
+.controls button i { margin-right: 5px; }
 
 /* Map */
 #map { width: 100%; }
 
-/* Modal */
+/* Modals */
 .modal {
     position: fixed;
     z-index: 2000;
@@ -49,14 +52,15 @@ body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
     max-width: 500px;
     max-height: 80vh;
     overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
-.close {
+.close, .close-add {
     color: #aaa;
     float: right;
     font-size: 28px;
     cursor: pointer;
 }
-.close:hover { color: black; }
+.close:hover, .close-add:hover { color: black; }
 .hidden { display: none; }
 
 /* Form and Lists */
@@ -69,14 +73,22 @@ body { margin: 0; font-family: Arial, sans-serif; background-color: #f4f4f4; }
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-#log-form button { background-color: #28a745; color: white; border: none; }
+#log-form button { background-color: #28a745; color: white; border: none; margin-top: 10px; }
 #log-form button:hover { background-color: #218838; }
 #food-list, #experiences { list-style: none; padding: 0; }
 #food-list li, #experiences li { padding: 5px 0; border-bottom: 1px solid #eee; }
+#food-list li:before { content: '🍽️ '; }
+#experiences li:before { content: '📝 '; }
+.modal-content h2, .modal-content h3 { color: #ff6b35; margin-bottom: 10px; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .controls { flex-direction: column; width: 200px; }
+    .controls { flex-direction: column; width: 200px; font-size: 12px; }
     .modal-content { width: 95%; padding: 15px; }
-    #map { height: calc(100vh - 100px); } /* Adjust for controls */
+    #map { height: calc(100vh - 120px); }
+}
+@media (max-width: 480px) {
+    .controls { top: 5px; left: 5px; width: calc(100vw - 10px); padding: 5px; }
+    .modal-content { width: 98%; max-height: 90vh; }
+    #log-form input[type="radio"] { width: auto; display: inline; margin-right: 10px; }
 }
