@@ -3,15 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Real Food Map Tracker</title>
+<title>Global Food Map Explorer</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="controls">
     <input id="city-input" placeholder="Enter city (e.g., Tokyo)">
-    <button id="load-city">Load Restaurants</button>
+    <select id="type-filter">
+        <option value="">All Types</option>
+        <option value="cafe">Cafe</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="fast_food">Fast Food</option>
+    </select>
+    <button id="load-city">Load Map</button>
     <button id="near-me">Near Me</button>
     <button id="reset-map">Reset Map</button>
 </div>
@@ -40,6 +48,7 @@
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
